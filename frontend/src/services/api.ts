@@ -1,0 +1,190 @@
+import axios from 'axios';
+import {
+  User,
+  TransceiverPipelineResponse,
+  PaginatedSessions,
+  AnalyticsOverview,
+  DemoSample,
+  STTResult,
+  TTSResult,
+  NLPResult,
+  TranslationResult,
+  RadioResult,
+  MLQualityResult
+} from '../types';
+
+const api = axios.create({
+  baseURL: '/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Auto attach JWT token
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('itantra_token');
+  if (token && config.headers) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export const authApi = {
+  login: async (email: string, password: string) => {
+    const res = await api.post('/auth/login', { email, password });
+    return res.data;
+  },
+  register: async (name: string, email: string, password: string) => {
+    const res = await api.post('/auth/register', { name, email, password });
+    return res.data;
+  },
+  getMe: async (): Promise<User> => {
+    const res = await api.get('/auth/me');
+    return res.data;
+  },
+};
+
+export const pipelineApi = {
+  executePipeline: async (formData: FormData): Promise<TransceiverPipelineResponse> => {
+    const res = await api.post('/sessions/pipeline', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return res.data;
+  },
+};
+
+export const speechApi = {
+  transcribeAudio: async (audioBlob: Blob, hintLanguage?: string): Promise<STTResult> => {
+    const formData = new FormData();
+    formData.append('audio', audioBlob, 'recording.wav');
+    if (hintLanguage) formData.append('hint_language', hintLanguage);
+    const res = await api.post('/speech/transcribe', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return res.data;
+  },
+  synthesizeText: async (text: string, language: string = 'en', slow: boolean = false): Promise<TTSResult> => {
+    const res = await api.post('/speech/synthesize', { text, language, slow });
+    return res.data;
+  },
+};
+
+export const nlpApi = {
+  detectLanguage: async (text: string) => {
+    const res = await api.post('/nlp/detect-language', { text });
+    return res.data;
+  },
+  analyzeIntent: async (text: string): Promise<NLPResult> => {
+    const res = await api.post('/nlp/analyze', { text });
+    return res.data;
+  },
+};
+
+export const translationApi = {
+  translate: async (text: string, sourceLang: string = 'auto', targetLang: string = 'hi'): Promise<TranslationResult> => {
+    const res = await api.post('/translation/translate', {
+      text,
+      source_language: sourceLang,
+      target_language: targetLang,
+    });
+    return res.data;
+  },
+};
+
+export const radioApi = {
+  simulate: async (params: {
+    message: string;
+    snr: number;
+    carrier_frequency?: number;
+    sampling_rate?: number;
+    bit_rate?: number;
+    channel_type?: string;
+    modulation?: string;
+  }): Promise<RadioResult> => {
+    const res = await api.post('/radio/simulate', params);
+    return res.data;
+  },
+};
+
+export const mlApi = {
+  predictQuality: async (params: {
+    snr: number;
+    ber: number;
+    latency_ms: number;
+    packet_loss: number;
+    signal_strength: number;
+    message_length?: number;
+    audio_duration?: number;
+    channel_type?: string;
+    language?: string;
+  }): Promise<MLQualityResult> => {
+    const res = await api.post('/ml/predict-quality', params);
+    return res.data;
+  },
+  getModelsInfo: async () => {
+    const res = await api.get('/ml/models');
+    return res.data;
+  },
+  getDatasetPreview: async () => {
+    const res = await api.get('/ml/dataset/preview');
+    return res.data;
+  },
+};
+
+export const sessionsApi = {
+  listSessions: async (params?: {
+    page?: number;
+    limit?: number;
+    search?: string;
+    language?: string;
+    intent?: string;
+  }): Promise<PaginatedSessions> => {
+    const res = await api.get('/sessions', { params });
+    return res.data;
+  },
+  getSessionDetails: async (sessionId: string) => {
+    const res = await api.get(`/sessions/${sessionId}`);
+    return res.data;
+  },
+  deleteSession: async (sessionId: string) => {
+    const res = await api.delete(`/sessions/${sessionId}`);
+    return res.data;
+  },
+};
+
+export const analyticsApi = {
+  getOverview: async (): Promise<AnalyticsOverview> => {
+    const res = await api.get('/analytics/overview');
+    return res.data;
+  },
+  getHealth: async () => {
+    const res = await api.get('/analytics/health');
+    return res.data;
+  },
+};
+
+export const demoApi = {
+  getSamples: async (): Promise<{ description: string; samples: DemoSample[] }> => {
+    const res = await api.get('/demo/samples');
+    return res.data;
+  },
+};
+
+export const adminApi = {
+  getUsers: async () => {
+    const res = await api.get('/admin/users');
+    return res.data;
+  },
+  getLogs: async () => {
+    const res = await api.get('/admin/logs');
+    return res.data;
+  },
+  resetDemoData: async () => {
+    const res = await api.post('/admin/reset-demo-data');
+    return res.data;
+  },
+};
+
+export default api;

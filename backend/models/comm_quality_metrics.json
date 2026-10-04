@@ -1,0 +1,132 @@
+{
+  "model_name": "Random Forest Communication Quality Classifier",
+  "algorithm": "Random Forest (100 Estimators, Depth=12)",
+  "total_samples": 5000,
+  "train_samples": 4000,
+  "test_samples": 1000,
+  "numerical_features": [
+    "snr",
+    "ber",
+    "latency_ms",
+    "packet_loss",
+    "signal_strength",
+    "message_length",
+    "audio_duration"
+  ],
+  "categorical_features": [
+    "channel_type",
+    "language"
+  ],
+  "classes": [
+    "Excellent",
+    "Good",
+    "Moderate",
+    "Poor"
+  ],
+  "accuracy": 0.984,
+  "precision": 0.9845,
+  "recall": 0.984,
+  "f1_score": 0.9841,
+  "confusion_matrix": [
+    [
+      618,
+      13,
+      0,
+      0
+    ],
+    [
+      1,
+      299,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      31,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      36
+    ]
+  ],
+  "classification_report": {
+    "Excellent": {
+      "precision": 0.9983844911147012,
+      "recall": 0.9793977812995246,
+      "f1-score": 0.9888,
+      "support": 631.0
+    },
+    "Good": {
+      "precision": 0.9583333333333334,
+      "recall": 0.9933554817275747,
+      "f1-score": 0.9755301794453507,
+      "support": 301.0
+    },
+    "Moderate": {
+      "precision": 0.96875,
+      "recall": 0.96875,
+      "f1-score": 0.96875,
+      "support": 32.0
+    },
+    "Poor": {
+      "precision": 0.972972972972973,
+      "recall": 1.0,
+      "f1-score": 0.9863013698630136,
+      "support": 36.0
+    },
+    "accuracy": 0.984,
+    "macro avg": {
+      "precision": 0.9746101993552518,
+      "recall": 0.9853758157567748,
+      "f1-score": 0.979845387327091,
+      "support": 1000.0
+    },
+    "weighted avg": {
+      "precision": 0.9844659742537369,
+      "recall": 0.984,
+      "f1-score": 0.9840742333281192,
+      "support": 1000.0
+    }
+  },
+  "feature_importances": {
+    "snr": 0.2755,
+    "packet_loss": 0.2252,
+    "ber": 0.204,
+    "signal_strength": 0.1609,
+    "latency_ms": 0.1092,
+    "audio_duration": 0.007,
+    "message_length": 0.0067,
+    "channel_type_Rayleigh": 0.003,
+    "channel_type_AWGN": 0.0028,
+    "language_hi": 0.001,
+    "language_ta": 0.0008,
+    "channel_type_Rician": 0.0007,
+    "language_bn": 0.0006,
+    "language_en": 0.0006,
+    "language_kn": 0.0005,
+    "language_mr": 0.0005,
+    "language_ml": 0.0004,
+    "language_te": 0.0004
+  },
+  "dataset_metadata": {
+    "synthetic": true,
+    "description": "Synthesized RF propagation & channel metrics modeled after AWGN, Rayleigh, and Rician channel physics.",
+    "columns": [
+      "sample_id",
+      "snr",
+      "ber",
+      "latency_ms",
+      "packet_loss",
+      "signal_strength",
+      "message_length",
+      "audio_duration",
+      "channel_type",
+      "language",
+      "communication_quality"
+    ]
+  }
+}

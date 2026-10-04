@@ -1,0 +1,224 @@
+{
+  "model_name": "TF-IDF + Logistic Regression Intent Classifier",
+  "algorithm": "Multinomial Logistic Regression (L2 Regularized)",
+  "total_samples": 360,
+  "train_samples": 270,
+  "test_samples": 90,
+  "classes": [
+    "Emergency",
+    "Information",
+    "Navigation",
+    "Normal Communication",
+    "Request",
+    "Status Update",
+    "Technical",
+    "Warning"
+  ],
+  "accuracy": 0.9333,
+  "precision": 0.9443,
+  "recall": 0.9333,
+  "f1_score": 0.9311,
+  "confusion_matrix": [
+    [
+      8,
+      0,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      11,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      8,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      12,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      11,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      11,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      12,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      11
+    ]
+  ],
+  "classification_report": {
+    "Emergency": {
+      "precision": 1.0,
+      "recall": 0.7272727272727273,
+      "f1-score": 0.8421052631578947,
+      "support": 11.0
+    },
+    "Information": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 11.0
+    },
+    "Navigation": {
+      "precision": 1.0,
+      "recall": 0.7272727272727273,
+      "f1-score": 0.8421052631578947,
+      "support": 11.0
+    },
+    "Normal Communication": {
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1-score": 0.8888888888888888,
+      "support": 12.0
+    },
+    "Request": {
+      "precision": 0.9166666666666666,
+      "recall": 1.0,
+      "f1-score": 0.9565217391304348,
+      "support": 11.0
+    },
+    "Status Update": {
+      "precision": 0.8461538461538461,
+      "recall": 1.0,
+      "f1-score": 0.9166666666666666,
+      "support": 11.0
+    },
+    "Technical": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 12.0
+    },
+    "Warning": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 11.0
+    },
+    "accuracy": 0.9333333333333333,
+    "macro avg": {
+      "precision": 0.9453525641025641,
+      "recall": 0.9318181818181819,
+      "f1-score": 0.9307859776252225,
+      "support": 90.0
+    },
+    "weighted avg": {
+      "precision": 0.9443447293447294,
+      "recall": 0.9333333333333333,
+      "f1-score": 0.9310894991100941,
+      "support": 90.0
+    }
+  },
+  "top_features": {
+    "Emergency": [
+      "பத ஏற",
+      "உதவ",
+      "உதவ பத",
+      "ಷಣ",
+      "emergency"
+    ],
+    "Information": [
+      "தகவல",
+      "advisory",
+      "வர",
+      "चन",
+      "आज"
+    ],
+    "Navigation": [
+      "आण",
+      "ലവ",
+      "ലവ ഖപ",
+      "ഖപ",
+      "आण आह"
+    ],
+    "Normal Communication": [
+      "றப பட",
+      "டத நன",
+      "றப",
+      "நன",
+      "रभ"
+    ],
+    "Request": [
+      "অন",
+      "पय",
+      "மத",
+      "அன மத",
+      "requesting"
+    ],
+    "Status Update": [
+      "रळ",
+      "सर रळ",
+      "रळ आह",
+      "अहव",
+      "at"
+    ],
+    "Technical": [
+      "ಲನ ನಡ",
+      "వర",
+      "சர யப",
+      "వర యబడ",
+      "యబడ"
+    ],
+    "Warning": [
+      "వస",
+      "చర రమ",
+      "చర",
+      "சர",
+      "warning"
+    ]
+  }
+}

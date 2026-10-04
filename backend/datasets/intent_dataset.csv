@@ -1,0 +1,361 @@
+text,intent
+"Mayday mayday, we have engine failure and need immediate search and rescue",Emergency
+"MAYDAY MAYDAY, WE HAVE ENGINE FAILURE AND NEED IMMEDIATE SEARCH AND RESCUE",Emergency
+"Transmission log: Mayday mayday, we have engine failure and need immediate search and rescue",Emergency
+"SOS! Vessel is sinking, coordinates 12.9716 N, 77.5946 E",Emergency
+"SOS! VESSEL IS SINKING, COORDINATES 12.9716 N, 77.5946 E",Emergency
+"Transmission log: SOS! Vessel is sinking, coordinates 12.9716 N, 77.5946 E",Emergency
+"Severe medical emergency onboard, requesting immediate airlift evacuation",Emergency
+"SEVERE MEDICAL EMERGENCY ONBOARD, REQUESTING IMMEDIATE AIRLIFT EVACUATION",Emergency
+"Transmission log: Severe medical emergency onboard, requesting immediate airlift evacuation",Emergency
+"आपातकालीन स्थिति! विमान का इंजन विफल हो गया है, तुरंत सहायता भेजें",Emergency
+"आपातकालीन स्थिति! विमान का इंजन विफल हो गया है, तुरंत सहायता भेजें",Emergency
+"Transmission log: आपातकालीन स्थिति! विमान का इंजन विफल हो गया है, तुरंत सहायता भेजें",Emergency
+"अत्यंत गंभीर संकट, जीवन रक्षक दल को तुरंत भेजें",Emergency
+"अत्यंत गंभीर संकट, जीवन रक्षक दल को तुरंत भेजें",Emergency
+"Transmission log: अत्यंत गंभीर संकट, जीवन रक्षक दल को तुरंत भेजें",Emergency
+"அவசர நிலை! கப்பல் மூழ்குகிறது, உடனடியாக மீட்புக் குழுவை அனுப்பவும்",Emergency
+"அவசர நிலை! கப்பல் மூழ்குகிறது, உடனடியாக மீட்புக் குழுவை அனுப்பவும்",Emergency
+"Transmission log: அவசர நிலை! கப்பல் மூழ்குகிறது, உடனடியாக மீட்புக் குழுவை அனுப்பவும்",Emergency
+துரித உதவி தேவை! விபத்து ஏற்பட்டுள்ளது,Emergency
+துரித உதவி தேவை! விபத்து ஏற்பட்டுள்ளது,Emergency
+Transmission log: துரித உதவி தேவை! விபத்து ஏற்பட்டுள்ளது,Emergency
+అత్యవసర పరిస్థితి! దయచేసి వెంటనే సహాయం పంపండి,Emergency
+అత్యవసర పరిస్థితి! దయచేసి వెంటనే సహాయం పంపండి,Emergency
+Transmission log: అత్యవసర పరిస్థితి! దయచేసి వెంటనే సహాయం పంపండి,Emergency
+ತುರ್ತು ಪರಿಸ್ಥಿತಿ! ತಕ್ಷಣ ರಕ್ಷಣಾ ತಂಡವನ್ನು ಕಳುಹಿಸಿ,Emergency
+ತುರ್ತು ಪರಿಸ್ಥಿತಿ! ತಕ್ಷಣ ರಕ್ಷಣಾ ತಂಡವನ್ನು ಕಳುಹಿಸಿ,Emergency
+Transmission log: ತುರ್ತು ಪರಿಸ್ಥಿತಿ! ತಕ್ಷಣ ರಕ್ಷಣಾ ತಂಡವನ್ನು ಕಳುಹಿಸಿ,Emergency
+അടിയന്തര സാഹചര്യം! ഉടൻ രക്ഷാപ്രവർത്തകരെ അയക്കുക,Emergency
+അടിയന്തര സാഹചര്യം! ഉടൻ രക്ഷാപ്രവർത്തകരെ അയക്കുക,Emergency
+Transmission log: അടിയന്തര സാഹചര്യം! ഉടൻ രക്ഷാപ്രവർത്തകരെ അയക്കുക,Emergency
+জরুরি অবস্থা! অবিলম্বে উদ্ধারকারী দল পাঠান,Emergency
+জরুরি অবস্থা! অবিলম্বে উদ্ধারকারী দল পাঠান,Emergency
+Transmission log: জরুরি অবস্থা! অবিলম্বে উদ্ধারকারী দল পাঠান,Emergency
+आणीबाणी! तातडीने मदत पाठवा,Emergency
+आणीबाणी! तातडीने मदत पाठवा,Emergency
+Transmission log: आणीबाणी! तातडीने मदत पाठवा,Emergency
+"Fire in the auxiliary engine compartment, executing emergency shutdown",Emergency
+"FIRE IN THE AUXILIARY ENGINE COMPARTMENT, EXECUTING EMERGENCY SHUTDOWN",Emergency
+"Transmission log: Fire in the auxiliary engine compartment, executing emergency shutdown",Emergency
+"Loss of cabin pressure, initiating rapid emergency descent",Emergency
+"LOSS OF CABIN PRESSURE, INITIATING RAPID EMERGENCY DESCENT",Emergency
+"Transmission log: Loss of cabin pressure, initiating rapid emergency descent",Emergency
+"Hostile interception detected, calling emergency defense protocol",Emergency
+"HOSTILE INTERCEPTION DETECTED, CALLING EMERGENCY DEFENSE PROTOCOL",Emergency
+"Transmission log: Hostile interception detected, calling emergency defense protocol",Emergency
+Warning: severe thunderstorm and turbulence reported along flight corridor,Warning
+WARNING: SEVERE THUNDERSTORM AND TURBULENCE REPORTED ALONG FLIGHT CORRIDOR,Warning
+Transmission log: Warning: severe thunderstorm and turbulence reported along flight corridor,Warning
+Caution: radio frequency interference detected on primary transponder,Warning
+CAUTION: RADIO FREQUENCY INTERFERENCE DETECTED ON PRIMARY TRANSPONDER,Warning
+Transmission log: Caution: radio frequency interference detected on primary transponder,Warning
+"Warning: low fuel reserve, 20 minutes remaining until critical threshold",Warning
+"WARNING: LOW FUEL RESERVE, 20 MINUTES REMAINING UNTIL CRITICAL THRESHOLD",Warning
+"Transmission log: Warning: low fuel reserve, 20 minutes remaining until critical threshold",Warning
+चेतावनी: आगामी मार्ग में भारी तूफान और बिजली गिरने की संभावना है,Warning
+चेतावनी: आगामी मार्ग में भारी तूफान और बिजली गिरने की संभावना है,Warning
+Transmission log: चेतावनी: आगामी मार्ग में भारी तूफान और बिजली गिरने की संभावना है,Warning
+सावधानी: ईंधन स्तर खतरनाक रूप से कम हो रहा है,Warning
+सावधानी: ईंधन स्तर खतरनाक रूप से कम हो रहा है,Warning
+Transmission log: सावधानी: ईंधन स्तर खतरनाक रूप से कम हो रहा है,Warning
+"எச்சரிக்கை: கடுமையான புயல் காற்று வீசுகிறது, எச்சரிக்கையாக இருக்கவும்",Warning
+"எச்சரிக்கை: கடுமையான புயல் காற்று வீசுகிறது, எச்சரிக்கையாக இருக்கவும்",Warning
+"Transmission log: எச்சரிக்கை: கடுமையான புயல் காற்று வீசுகிறது, எச்சரிக்கையாக இருக்கவும்",Warning
+ஹெச்சரிக்கை: சிக்னல் இழப்பு ஏற்பட வாய்ப்புள்ளது,Warning
+ஹெச்சரிக்கை: சிக்னல் இழப்பு ஏற்பட வாய்ப்புள்ளது,Warning
+Transmission log: ஹெச்சரிக்கை: சிக்னல் இழப்பு ஏற்பட வாய்ப்புள்ளது,Warning
+హెచ్చరిక: తీవ్రమైన తుఫాను వస్తోంది,Warning
+హెచ్చరిక: తీవ్రమైన తుఫాను వస్తోంది,Warning
+Transmission log: హెచ్చరిక: తీవ్రమైన తుఫాను వస్తోంది,Warning
+ಎಚ್ಚರಿಕೆ: ಭಾರೀ ಮಳೆ ಮತ್ತು ಬಿರುಗಾಳಿ ಸಂಭವಿಸಬಹುದು,Warning
+ಎಚ್ಚರಿಕೆ: ಭಾರೀ ಮಳೆ ಮತ್ತು ಬಿರುಗಾಳಿ ಸಂಭವಿಸಬಹುದು,Warning
+Transmission log: ಎಚ್ಚರಿಕೆ: ಭಾರೀ ಮಳೆ ಮತ್ತು ಬಿರುಗಾಳಿ ಸಂಭವಿಸಬಹುದು,Warning
+മുന്നറിയിപ്പ്: മോശം കാലാവസ്ഥ മുന്നിലുണ്ട്,Warning
+മുന്നറിയിപ്പ്: മോശം കാലാവസ്ഥ മുന്നിലുണ്ട്,Warning
+Transmission log: മുന്നറിയിപ്പ്: മോശം കാലാവസ്ഥ മുന്നിലുണ്ട്,Warning
+সতর্কবার্তা: তীব্র বজ্রঝড় ও প্রতিকূল আবহাওয়া,Warning
+সতর্কবার্তা: তীব্র বজ্রঝড় ও প্রতিকূল আবহাওয়া,Warning
+Transmission log: সতর্কবার্তা: তীব্র বজ্রঝড় ও প্রতিকূল আবহাওয়া,Warning
+इशारा: पुढील मार्गावर वादळ आहे,Warning
+इशारा: पुढील मार्गावर वादळ आहे,Warning
+Transmission log: इशारा: पुढील मार्गावर वादळ आहे,Warning
+Proximity warning: unknown aircraft on collision course 5 miles ahead,Warning
+PROXIMITY WARNING: UNKNOWN AIRCRAFT ON COLLISION COURSE 5 MILES AHEAD,Warning
+Transmission log: Proximity warning: unknown aircraft on collision course 5 miles ahead,Warning
+"Alert: runway ice formation detected, braking action compromised",Warning
+"ALERT: RUNWAY ICE FORMATION DETECTED, BRAKING ACTION COMPROMISED",Warning
+"Transmission log: Alert: runway ice formation detected, braking action compromised",Warning
+High temperature warning on propulsion subsystem,Warning
+HIGH TEMPERATURE WARNING ON PROPULSION SUBSYSTEM,Warning
+Transmission log: High temperature warning on propulsion subsystem,Warning
+"Good morning base station, this is flight 402 checking radio clarity",Normal Communication
+"GOOD MORNING BASE STATION, THIS IS FLIGHT 402 CHECKING RADIO CLARITY",Normal Communication
+"Transmission log: Good morning base station, this is flight 402 checking radio clarity",Normal Communication
+"Roger that control, message received loud and clear, over and out",Normal Communication
+"ROGER THAT CONTROL, MESSAGE RECEIVED LOUD AND CLEAR, OVER AND OUT",Normal Communication
+"Transmission log: Roger that control, message received loud and clear, over and out",Normal Communication
+"Confirming receipt of transmission, everything is running smoothly",Normal Communication
+"CONFIRMING RECEIPT OF TRANSMISSION, EVERYTHING IS RUNNING SMOOTHLY",Normal Communication
+"Transmission log: Confirming receipt of transmission, everything is running smoothly",Normal Communication
+"शुभ प्रभात, बेस स्टेशन से संपर्क स्थापित हो गया है",Normal Communication
+"शुभ प्रभात, बेस स्टेशन से संपर्क स्थापित हो गया है",Normal Communication
+"Transmission log: शुभ प्रभात, बेस स्टेशन से संपर्क स्थापित हो गया है",Normal Communication
+"संदेश प्राप्त हुआ, आवाज स्पष्ट और साफ सुनाई दे रही है",Normal Communication
+"संदेश प्राप्त हुआ, आवाज स्पष्ट और साफ सुनाई दे रही है",Normal Communication
+"Transmission log: संदेश प्राप्त हुआ, आवाज स्पष्ट और साफ सुनाई दे रही है",Normal Communication
+"காலை வணக்கம், தகவல் தெளிவாக கேட்கிறது",Normal Communication
+"காலை வணக்கம், தகவல் தெளிவாக கேட்கிறது",Normal Communication
+"Transmission log: காலை வணக்கம், தகவல் தெளிவாக கேட்கிறது",Normal Communication
+"செய்தி பெறப்பட்டது, நன்றி",Normal Communication
+"செய்தி பெறப்பட்டது, நன்றி",Normal Communication
+"Transmission log: செய்தி பெறப்பட்டது, நன்றி",Normal Communication
+"శుభోదయం, సమాచారం స్పష్టంగా వినబడుతోంది",Normal Communication
+"శుభోదయం, సమాచారం స్పష్టంగా వినబడుతోంది",Normal Communication
+"Transmission log: శుభోదయం, సమాచారం స్పష్టంగా వినబడుతోంది",Normal Communication
+"ಶುಭೋದಯ, ಧ್ವನಿ ಸ್ಪಷ್ಟವಾಗಿ ಕೇಳಿಸುತ್ತಿದೆ",Normal Communication
+"ಶುಭೋದಯ, ಧ್ವನಿ ಸ್ಪಷ್ಟವಾಗಿ ಕೇಳಿಸುತ್ತಿದೆ",Normal Communication
+"Transmission log: ಶುಭೋದಯ, ಧ್ವನಿ ಸ್ಪಷ್ಟವಾಗಿ ಕೇಳಿಸುತ್ತಿದೆ",Normal Communication
+"സുപ്രഭാതം, ശബ്ദം വ്യക്തമായി കേൾക്കുന്നുണ്ട്",Normal Communication
+"സുപ്രഭാതം, ശബ്ദം വ്യക്തമായി കേൾക്കുന്നുണ്ട്",Normal Communication
+"Transmission log: സുപ്രഭാതം, ശബ്ദം വ്യക്തമായി കേൾക്കുന്നുണ്ട്",Normal Communication
+"সুপ্রভাত, সিগন্যাল স্পষ্ট এবং যোগাযোগ প্রতিষ্ঠিত হয়েছে",Normal Communication
+"সুপ্রভাত, সিগন্যাল স্পষ্ট এবং যোগাযোগ প্রতিষ্ঠিত হয়েছে",Normal Communication
+"Transmission log: সুপ্রভাত, সিগন্যাল স্পষ্ট এবং যোগাযোগ প্রতিষ্ঠিত হয়েছে",Normal Communication
+"शुभ प्रभात, संदेश व्यवस्थित मिळाला आहे",Normal Communication
+"शुभ प्रभात, संदेश व्यवस्थित मिळाला आहे",Normal Communication
+"Transmission log: शुभ प्रभात, संदेश व्यवस्थित मिळाला आहे",Normal Communication
+"Have a good shift team, signing off from post alpha",Normal Communication
+"HAVE A GOOD SHIFT TEAM, SIGNING OFF FROM POST ALPHA",Normal Communication
+"Transmission log: Have a good shift team, signing off from post alpha",Normal Communication
+All crew members in position and ready for standard briefing,Normal Communication
+ALL CREW MEMBERS IN POSITION AND READY FOR STANDARD BRIEFING,Normal Communication
+Transmission log: All crew members in position and ready for standard briefing,Normal Communication
+"Acknowledged flight plan update, having normal cruise flight",Normal Communication
+"ACKNOWLEDGED FLIGHT PLAN UPDATE, HAVING NORMAL CRUISE FLIGHT",Normal Communication
+"Transmission log: Acknowledged flight plan update, having normal cruise flight",Normal Communication
+Transceiver carrier frequency shifted to 2.45 GHz with QPSK modulation,Technical
+TRANSCEIVER CARRIER FREQUENCY SHIFTED TO 2.45 GHZ WITH QPSK MODULATION,Technical
+Transmission log: Transceiver carrier frequency shifted to 2.45 GHz with QPSK modulation,Technical
+Calibrating antenna phase array and checking signal to noise ratio,Technical
+CALIBRATING ANTENNA PHASE ARRAY AND CHECKING SIGNAL TO NOISE RATIO,Technical
+Transmission log: Calibrating antenna phase array and checking signal to noise ratio,Technical
+Bit error rate elevated to 0.04 due to multi-path Rayleigh fading,Technical
+BIT ERROR RATE ELEVATED TO 0.04 DUE TO MULTI-PATH RAYLEIGH FADING,Technical
+Transmission log: Bit error rate elevated to 0.04 due to multi-path Rayleigh fading,Technical
+ट्रांससीवर आवृत्ति 2.4 गीगाहर्ट्ज़ पर ट्यून की गई है,Technical
+ट्रांससीवर आवृत्ति 2.4 गीगाहर्ट्ज़ पर ट्यून की गई है,Technical
+Transmission log: ट्रांससीवर आवृत्ति 2.4 गीगाहर्ट्ज़ पर ट्यून की गई है,Technical
+सिग्नल टू नॉइज़ रेशियो की गणना और मॉड्यूलेशन पैरामीटर जांचें,Technical
+सिग्नल टू नॉइज़ रेशियो की गणना और मॉड्यूलेशन पैरामीटर जांचें,Technical
+Transmission log: सिग्नल टू नॉइज़ रेशियो की गणना और मॉड्यूलेशन पैरामीटर जांचें,Technical
+ரேடியோ அலைவரிசை மற்றும் சிக்னல் தரம் பரிசோதிக்கப்படுகிறது,Technical
+ரேடியோ அலைவரிசை மற்றும் சிக்னல் தரம் பரிசோதிக்கப்படுகிறது,Technical
+Transmission log: ரேடியோ அலைவரிசை மற்றும் சிக்னல் தரம் பரிசோதிக்கப்படுகிறது,Technical
+தொழில்நுட்ப பிழை சரிசெய்யப்பட்டது,Technical
+தொழில்நுட்ப பிழை சரிசெய்யப்பட்டது,Technical
+Transmission log: தொழில்நுட்ப பிழை சரிசெய்யப்பட்டது,Technical
+ట్రాన్స్‌సీవర్ ఫ్రీక్వెన్సీ సెట్ చేయబడింది,Technical
+ట్రాన్స్‌సీవర్ ఫ్రీక్వెన్సీ సెట్ చేయబడింది,Technical
+Transmission log: ట్రాన్స్‌సీవర్ ఫ్రీక్వెన్సీ సెట్ చేయబడింది,Technical
+ತಾಂತ್ರಿಕ ದೋಷ ಪರಿಶೀಲನೆ ನಡೆಯುತ್ತಿದೆ,Technical
+ತಾಂತ್ರಿಕ ದೋಷ ಪರಿಶೀಲನೆ ನಡೆಯುತ್ತಿದೆ,Technical
+Transmission log: ತಾಂತ್ರಿಕ ದೋಷ ಪರಿಶೀಲನೆ ನಡೆಯುತ್ತಿದೆ,Technical
+സാങ്കേതിക തകരാറുകൾ പരിഹരിച്ചു,Technical
+സാങ്കേതിക തകരാറുകൾ പരിഹരിച്ചു,Technical
+Transmission log: സാങ്കേതിക തകരാറുകൾ പരിഹരിച്ചു,Technical
+ট্রান্সসিভার ক্যারিয়ার ফ্রিকোয়েন্সি সমন্বয় করা হচ্ছে,Technical
+ট্রান্সসিভার ক্যারিয়ার ফ্রিকোয়েন্সি সমন্বয় করা হচ্ছে,Technical
+Transmission log: ট্রান্সসিভার ক্যারিয়ার ফ্রিকোয়েন্সি সমন্বয় করা হচ্ছে,Technical
+तांत्रिक तपासणी पूर्ण झाली आहे,Technical
+तांत्रिक तपासणी पूर्ण झाली आहे,Technical
+Transmission log: तांत्रिक तपासणी पूर्ण झाली आहे,Technical
+Testing low-noise amplifier gain and digital down-converter filter response,Technical
+TESTING LOW-NOISE AMPLIFIER GAIN AND DIGITAL DOWN-CONVERTER FILTER RESPONSE,Technical
+Transmission log: Testing low-noise amplifier gain and digital down-converter filter response,Technical
+Telemetry packet framing error detected in sub-band 3,Technical
+TELEMETRY PACKET FRAMING ERROR DETECTED IN SUB-BAND 3,Technical
+Transmission log: Telemetry packet framing error detected in sub-band 3,Technical
+Bandwidth allocation configured to 20 MHz channel spacing,Technical
+BANDWIDTH ALLOCATION CONFIGURED TO 20 MHZ CHANNEL SPACING,Technical
+Transmission log: Bandwidth allocation configured to 20 MHz channel spacing,Technical
+Requesting heading vector 240 degrees to avoid weather formation,Navigation
+REQUESTING HEADING VECTOR 240 DEGREES TO AVOID WEATHER FORMATION,Navigation
+Transmission log: Requesting heading vector 240 degrees to avoid weather formation,Navigation
+"Current position: 19 degrees North, 72 degrees East, altitude 32000 feet",Navigation
+"CURRENT POSITION: 19 DEGREES NORTH, 72 DEGREES EAST, ALTITUDE 32000 FEET",Navigation
+"Transmission log: Current position: 19 degrees North, 72 degrees East, altitude 32000 feet",Navigation
+"Direct route waypoint Bravo-6 approved, maintaining flight level 350",Navigation
+"DIRECT ROUTE WAYPOINT BRAVO-6 APPROVED, MAINTAINING FLIGHT LEVEL 350",Navigation
+"Transmission log: Direct route waypoint Bravo-6 approved, maintaining flight level 350",Navigation
+"वर्तमान निर्देशांक: 28.6139 उत्तर, 77.2090 पूर्व, ऊंचाई 10,000 फीट",Navigation
+"वर्तमान निर्देशांक: 28.6139 उत्तर, 77.2090 पूर्व, ऊंचाई 10,000 फीट",Navigation
+"Transmission log: वर्तमान निर्देशांक: 28.6139 उत्तर, 77.2090 पूर्व, ऊंचाई 10,000 फीट",Navigation
+"मार्ग परिवर्तन की अनुमति दें, दिशा 180 डिग्री दक्षिण",Navigation
+"मार्ग परिवर्तन की अनुमति दें, दिशा 180 डिग्री दक्षिण",Navigation
+"Transmission log: मार्ग परिवर्तन की अनुमति दें, दिशा 180 डिग्री दक्षिण",Navigation
+தற்போதைய திசை மற்றும் அமைவிடம் பதிவு செய்யப்பட்டுள்ளது,Navigation
+தற்போதைய திசை மற்றும் அமைவிடம் பதிவு செய்யப்பட்டுள்ளது,Navigation
+Transmission log: தற்போதைய திசை மற்றும் அமைவிடம் பதிவு செய்யப்பட்டுள்ளது,Navigation
+வழிசெலுத்தல் பாதை உறுதி செய்யப்பட்டது,Navigation
+வழிசெலுத்தல் பாதை உறுதி செய்யப்பட்டது,Navigation
+Transmission log: வழிசெலுத்தல் பாதை உறுதி செய்யப்பட்டது,Navigation
+ప్రస్తుత దిశ మరియు లొకేషన్ వివరాలు,Navigation
+ప్రస్తుత దిశ మరియు లొకేషన్ వివరాలు,Navigation
+Transmission log: ప్రస్తుత దిశ మరియు లొకేషన్ వివరాలు,Navigation
+ಪ್ರಸ್ತುತ ಮಾರ್ಗದ ನಿರ್ದೇಶನ ಮತ್ತು ಎತ್ತರ,Navigation
+ಪ್ರಸ್ತುತ ಮಾರ್ಗದ ನಿರ್ದೇಶನ ಮತ್ತು ಎತ್ತರ,Navigation
+Transmission log: ಪ್ರಸ್ತುತ ಮಾರ್ಗದ ನಿರ್ದೇಶನ ಮತ್ತು ಎತ್ತರ,Navigation
+നിലവിലെ സ്ഥാനം രേഖപ്പെടുത്തി,Navigation
+നിലവിലെ സ്ഥാനം രേഖപ്പെടുത്തി,Navigation
+Transmission log: നിലവിലെ സ്ഥാനം രേഖപ്പെടുത്തി,Navigation
+বর্তমান স্থানাঙ্ক এবং গতিপথ নিশ্চিত করা হল,Navigation
+বর্তমান স্থানাঙ্ক এবং গতিপথ নিশ্চিত করা হল,Navigation
+Transmission log: বর্তমান স্থানাঙ্ক এবং গতিপথ নিশ্চিত করা হল,Navigation
+दिशा आणि मार्ग निश्चित केला आहे,Navigation
+दिशा आणि मार्ग निश्चित केला आहे,Navigation
+Transmission log: दिशा आणि मार्ग निश्चित केला आहे,Navigation
+"Turning left to interception bearing 095, descending to 4000 ft",Navigation
+"TURNING LEFT TO INTERCEPTION BEARING 095, DESCENDING TO 4000 FT",Navigation
+"Transmission log: Turning left to interception bearing 095, descending to 4000 ft",Navigation
+"GPS lock confirmed on 12 satellites, accuracy within 2 meters",Navigation
+"GPS LOCK CONFIRMED ON 12 SATELLITES, ACCURACY WITHIN 2 METERS",Navigation
+"Transmission log: GPS lock confirmed on 12 satellites, accuracy within 2 meters",Navigation
+Holding pattern established over beacon Charlie at 6000 feet,Navigation
+HOLDING PATTERN ESTABLISHED OVER BEACON CHARLIE AT 6000 FEET,Navigation
+Transmission log: Holding pattern established over beacon Charlie at 6000 feet,Navigation
+Requesting permission to enter sector 7 airspace immediately,Request
+REQUESTING PERMISSION TO ENTER SECTOR 7 AIRSPACE IMMEDIATELY,Request
+Transmission log: Requesting permission to enter sector 7 airspace immediately,Request
+Requesting frequency handoff to regional traffic command,Request
+REQUESTING FREQUENCY HANDOFF TO REGIONAL TRAFFIC COMMAND,Request
+Transmission log: Requesting frequency handoff to regional traffic command,Request
+Please authorize emergency landing on runway 27 Right,Request
+PLEASE AUTHORIZE EMERGENCY LANDING ON RUNWAY 27 RIGHT,Request
+Transmission log: Please authorize emergency landing on runway 27 Right,Request
+कृपया सेक्टर 3 में प्रवेश करने की अनुमति प्रदान करें,Request
+कृपया सेक्टर 3 में प्रवेश करने की अनुमति प्रदान करें,Request
+Transmission log: कृपया सेक्टर 3 में प्रवेश करने की अनुमति प्रदान करें,Request
+ईंधन भरने के लिए निकटतम सुरक्षित स्थान की अनुमति दें,Request
+ईंधन भरने के लिए निकटतम सुरक्षित स्थान की अनुमति दें,Request
+Transmission log: ईंधन भरने के लिए निकटतम सुरक्षित स्थान की अनुमति दें,Request
+அனுமதி வழங்கும்படி கேட்டுக்கொள்கிறோம்,Request
+அனுமதி வழங்கும்படி கேட்டுக்கொள்கிறோம்,Request
+Transmission log: அனுமதி வழங்கும்படி கேட்டுக்கொள்கிறோம்,Request
+அவசர தரை இறங்க அனுமதி தேவை,Request
+அவசர தரை இறங்க அனுமதி தேவை,Request
+Transmission log: அவசர தரை இறங்க அனுமதி தேவை,Request
+దయచేసి అనుమతి ఇవ్వండి,Request
+దయచేసి అనుమతి ఇవ్వండి,Request
+Transmission log: దయచేసి అనుమతి ఇవ్వండి,Request
+ದಯವಿಟ್ಟು ಪ್ರವೇಶ ಅನುಮತಿ ನೀಡಿ,Request
+ದಯವಿಟ್ಟು ಪ್ರವೇಶ ಅನುಮತಿ ನೀಡಿ,Request
+Transmission log: ದಯವಿಟ್ಟು ಪ್ರವೇಶ ಅನುಮತಿ ನೀಡಿ,Request
+ദയവായി അനുമതി നൽകുക,Request
+ദയവായി അനുമതി നൽകുക,Request
+Transmission log: ദയവായി അനുമതി നൽകുക,Request
+অনুগ্রহ করে অবতরনের অনুমতি দিন,Request
+অনুগ্রহ করে অবতরনের অনুমতি দিন,Request
+Transmission log: অনুগ্রহ করে অবতরনের অনুমতি দিন,Request
+कृपया लँडिंगची परवानगी द्यावी,Request
+कृपया लँडिंगची परवानगी द्यावी,Request
+Transmission log: कृपया लँडिंगची परवानगी द्यावी,Request
+Requesting updated meteorological weather report for destination,Request
+REQUESTING UPDATED METEOROLOGICAL WEATHER REPORT FOR DESTINATION,Request
+Transmission log: Requesting updated meteorological weather report for destination,Request
+Requesting backup transmission channel due to high packet loss,Request
+REQUESTING BACKUP TRANSMISSION CHANNEL DUE TO HIGH PACKET LOSS,Request
+Transmission log: Requesting backup transmission channel due to high packet loss,Request
+Kindly repeat previous azimuth coordinates for confirmation,Request
+KINDLY REPEAT PREVIOUS AZIMUTH COORDINATES FOR CONFIRMATION,Request
+Transmission log: Kindly repeat previous azimuth coordinates for confirmation,Request
+"Current status: Fuel at 85%, payload secure, communications nominal",Status Update
+"CURRENT STATUS: FUEL AT 85%, PAYLOAD SECURE, COMMUNICATIONS NOMINAL",Status Update
+"Transmission log: Current status: Fuel at 85%, payload secure, communications nominal",Status Update
+"All subsystem diagnostics passed, ready for mission deployment",Status Update
+"ALL SUBSYSTEM DIAGNOSTICS PASSED, READY FOR MISSION DEPLOYMENT",Status Update
+"Transmission log: All subsystem diagnostics passed, ready for mission deployment",Status Update
+"Patrol cycle 4 completed without incident, returning to base",Status Update
+"PATROL CYCLE 4 COMPLETED WITHOUT INCIDENT, RETURNING TO BASE",Status Update
+"Transmission log: Patrol cycle 4 completed without incident, returning to base",Status Update
+स्थिति रिपोर्ट: सभी उपकरण सामान्य रूप से काम कर रहे हैं,Status Update
+स्थिति रिपोर्ट: सभी उपकरण सामान्य रूप से काम कर रहे हैं,Status Update
+Transmission log: स्थिति रिपोर्ट: सभी उपकरण सामान्य रूप से काम कर रहे हैं,Status Update
+मिशन का पहला चरण सफलतापूर्वक पूरा हो गया है,Status Update
+मिशन का पहला चरण सफलतापूर्वक पूरा हो गया है,Status Update
+Transmission log: मिशन का पहला चरण सफलतापूर्वक पूरा हो गया है,Status Update
+நிலை அறிக்கை: அனைத்து அமைப்புகளும் சீராக இயங்குகின்றன,Status Update
+நிலை அறிக்கை: அனைத்து அமைப்புகளும் சீராக இயங்குகின்றன,Status Update
+Transmission log: நிலை அறிக்கை: அனைத்து அமைப்புகளும் சீராக இயங்குகின்றன,Status Update
+பணி வெற்றிகரமாக முடிந்தது,Status Update
+பணி வெற்றிகரமாக முடிந்தது,Status Update
+Transmission log: பணி வெற்றிகரமாக முடிந்தது,Status Update
+పరిస్థితి నివేదిక: వ్యవస్థలన్నీ సరిగ్గా పనిచేస్తున్నాయి,Status Update
+పరిస్థితి నివేదిక: వ్యవస్థలన్నీ సరిగ్గా పనిచేస్తున్నాయి,Status Update
+Transmission log: పరిస్థితి నివేదిక: వ్యవస్థలన్నీ సరిగ్గా పనిచేస్తున్నాయి,Status Update
+ಸ್ಥಿತಿ ವರದಿ: ಎಲ್ಲಾ ವ್ಯವಸ್ಥೆಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿವೆ,Status Update
+ಸ್ಥಿತಿ ವರದಿ: ಎಲ್ಲಾ ವ್ಯವಸ್ಥೆಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿವೆ,Status Update
+Transmission log: ಸ್ಥಿತಿ ವರದಿ: ಎಲ್ಲಾ ವ್ಯವಸ್ಥೆಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿವೆ,Status Update
+സ്ഥിതിവിവരം: എല്ലാ പ്രവർത്തനങ്ങളും സാധാരണ നിലയിലാണ്,Status Update
+സ്ഥിതിവിവരം: എല്ലാ പ്രവർത്തനങ്ങളും സാധാരണ നിലയിലാണ്,Status Update
+Transmission log: സ്ഥിതിവിവരം: എല്ലാ പ്രവർത്തനങ്ങളും സാധാരണ നിലയിലാണ്,Status Update
+স্ট্যাটাস আপডেট: সব সিস্টেম স্বাভাবিক রয়েছে,Status Update
+স্ট্যাটাস আপডেট: সব সিস্টেম স্বাভাবিক রয়েছে,Status Update
+Transmission log: স্ট্যাটাস আপডেট: সব সিস্টেম স্বাভাবিক রয়েছে,Status Update
+स्थिती अहवाल: सर्व कार्य सुरळीत सुरू आहे,Status Update
+स्थिती अहवाल: सर्व कार्य सुरळीत सुरू आहे,Status Update
+Transmission log: स्थिती अहवाल: सर्व कार्य सुरळीत सुरू आहे,Status Update
+"Checkpoint Delta passed at 14:32 hours, ETA to target 25 minutes",Status Update
+"CHECKPOINT DELTA PASSED AT 14:32 HOURS, ETA TO TARGET 25 MINUTES",Status Update
+"Transmission log: Checkpoint Delta passed at 14:32 hours, ETA to target 25 minutes",Status Update
+"Battery backup charging complete, generator load at 42 percent",Status Update
+"BATTERY BACKUP CHARGING COMPLETE, GENERATOR LOAD AT 42 PERCENT",Status Update
+"Transmission log: Battery backup charging complete, generator load at 42 percent",Status Update
+Radio access network traffic load stabilized at 68 percent,Status Update
+RADIO ACCESS NETWORK TRAFFIC LOAD STABILIZED AT 68 PERCENT,Status Update
+Transmission log: Radio access network traffic load stabilized at 68 percent,Status Update
+Notice to all units: routine frequency maintenance scheduled at midnight,Information
+NOTICE TO ALL UNITS: ROUTINE FREQUENCY MAINTENANCE SCHEDULED AT MIDNIGHT,Information
+Transmission log: Notice to all units: routine frequency maintenance scheduled at midnight,Information
+Broadcast: civilian drone flight restricted within 5 nautical miles,Information
+BROADCAST: CIVILIAN DRONE FLIGHT RESTRICTED WITHIN 5 NAUTICAL MILES,Information
+Transmission log: Broadcast: civilian drone flight restricted within 5 nautical miles,Information
+Information bulletin: new encryption keys active from 0600 hours,Information
+INFORMATION BULLETIN: NEW ENCRYPTION KEYS ACTIVE FROM 0600 HOURS,Information
+Transmission log: Information bulletin: new encryption keys active from 0600 hours,Information
+सूचना: आज रात संचार चैनल का नियमित रखरखाव किया जाएगा,Information
+सूचना: आज रात संचार चैनल का नियमित रखरखाव किया जाएगा,Information
+Transmission log: सूचना: आज रात संचार चैनल का नियमित रखरखाव किया जाएगा,Information
+जानकारी: नई सुरक्षा नीति और कोड आज से लागू होंगे,Information
+जानकारी: नई सुरक्षा नीति और कोड आज से लागू होंगे,Information
+Transmission log: जानकारी: नई सुरक्षा नीति और कोड आज से लागू होंगे,Information
+தகவல் அறிவிப்பு: புதிய அலைவரிசை விவரங்கள் வெளியிடப்பட்டுள்ளன,Information
+தகவல் அறிவிப்பு: புதிய அலைவரிசை விவரங்கள் வெளியிடப்பட்டுள்ளன,Information
+Transmission log: தகவல் அறிவிப்பு: புதிய அலைவரிசை விவரங்கள் வெளியிடப்பட்டுள்ளன,Information
+பொது தகவல்: வானிலை சீரடைந்து வருகிறது,Information
+பொது தகவல்: வானிலை சீரடைந்து வருகிறது,Information
+Transmission log: பொது தகவல்: வானிலை சீரடைந்து வருகிறது,Information
+సమాచారం: కొత్త నిబంధనలు అమల్లోకి వచ్చాయి,Information
+సమాచారం: కొత్త నిబంధనలు అమల్లోకి వచ్చాయి,Information
+Transmission log: సమాచారం: కొత్త నిబంధనలు అమల్లోకి వచ్చాయి,Information
+ಮಾಹಿತಿ: ಹೊಸ ಮಾರ್ಗಸೂಚಿಗಳು ಲಭ್ಯವಿದೆ,Information
+ಮಾಹಿತಿ: ಹೊಸ ಮಾರ್ಗಸೂಚಿಗಳು ಲಭ್ಯವಿದೆ,Information
+Transmission log: ಮಾಹಿತಿ: ಹೊಸ ಮಾರ್ಗಸೂಚಿಗಳು ಲಭ್ಯವಿದೆ,Information
+വിവരം: പുതിയ വിവരങ്ങൾ ലഭ്യമാക്കിയിട്ടുണ്ട്,Information
+വിവരം: പുതിയ വിവരങ്ങൾ ലഭ്യമാക്കിയിട്ടുണ്ട്,Information
+Transmission log: വിവരം: പുതിയ വിവരങ്ങൾ ലഭ്യമാക്കിയിട്ടുണ്ട്,Information
+তথ্য বিজ্ঞপ্তি: নতুন নির্দেশিকা জারি করা হয়েছে,Information
+তথ্য বিজ্ঞপ্তি: নতুন নির্দেশিকা জারি করা হয়েছে,Information
+Transmission log: তথ্য বিজ্ঞপ্তি: নতুন নির্দেশিকা জারি করা হয়েছে,Information
+माहिती: नवीन सूचना जारी करण्यात आली आहे,Information
+माहिती: नवीन सूचना जारी करण्यात आली आहे,Information
+Transmission log: माहिती: नवीन सूचना जारी करण्यात आली आहे,Information
+Reference guide updated on tactical dispatch terminal,Information
+REFERENCE GUIDE UPDATED ON TACTICAL DISPATCH TERMINAL,Information
+Transmission log: Reference guide updated on tactical dispatch terminal,Information
+Advisory: high solar flare activity may cause momentary UHF flicker,Information
+ADVISORY: HIGH SOLAR FLARE ACTIVITY MAY CAUSE MOMENTARY UHF FLICKER,Information
+Transmission log: Advisory: high solar flare activity may cause momentary UHF flicker,Information
+Weather advisory: visibility improving to 10 kilometers across sector,Information
+WEATHER ADVISORY: VISIBILITY IMPROVING TO 10 KILOMETERS ACROSS SECTOR,Information
+Transmission log: Weather advisory: visibility improving to 10 kilometers across sector,Information

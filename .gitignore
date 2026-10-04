@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+*.egg
+.env
+.venv
+venv/
+env/
+
+# Backend
+backend/itantra.db
+backend/audio/inputs/*
+backend/audio/outputs/*
+!backend/audio/inputs/.gitkeep
+!backend/audio/outputs/.gitkeep
+backend/models/*.pkl
+backend/models/*.joblib
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
