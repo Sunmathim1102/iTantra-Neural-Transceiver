@@ -7,18 +7,15 @@ import {
   Sparkles,
   Volume2,
   Activity,
-  CheckCircle2,
-  Clock,
-  Cpu,
-  Layers,
-  ShieldAlert,
-  ArrowRight,
   RefreshCw,
   Play,
   Pause,
   Download,
   Sliders,
-  Wifi
+  Wifi,
+  Languages,
+  CheckCircle2,
+  TrendingUp
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -26,10 +23,7 @@ import {
   Line,
   XAxis,
   YAxis,
-  Tooltip,
-  ScatterChart,
-  Scatter,
-  ZAxis
+  Tooltip
 } from 'recharts';
 import { pipelineApi, demoApi } from '../services/api';
 import { TransceiverPipelineResponse, DemoSample } from '../types';
@@ -99,48 +93,49 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
   const stopRecording = () => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop();
-      setIsRecording(false);
       mediaRecorderRef.current.stream.getTracks().forEach((track) => track.stop());
+      setIsRecording(false);
     }
   };
 
   const handleSelectDemoSample = (sample: DemoSample) => {
     setInputText(sample.text);
-    setTargetLanguage(sample.suggested_target);
-    setSnr(sample.default_snr);
-    setChannelType(sample.channel_type);
-    setModulation(sample.modulation);
+    setTargetLanguage(sample.suggested_target || 'en');
+    setSnr(sample.default_snr || 15);
   };
 
   const runPipeline = async () => {
+    if (!inputText && !audioBlob) {
+      alert('Please enter text or record speech first.');
+      return;
+    }
+
     setLoading(true);
     setActiveStage(1);
+    setPipelineResult(null);
+
+    // Simulate animated step progression
+    const interval = setInterval(() => {
+      setActiveStage((prev) => (prev < 7 ? prev + 1 : prev));
+    }, 400);
 
     try {
-      const formData = new FormData();
-      if (inputText) formData.append('text', inputText);
-      formData.append('target_language', targetLanguage);
-      formData.append('snr', snr.toString());
-      formData.append('channel_type', channelType);
-      formData.append('modulation', modulation);
-      formData.append('carrier_frequency', carrierFrequency.toString());
-      formData.append('is_demo', isDemoMode ? 'true' : 'false');
+      const result = await pipelineApi.runPipeline({
+        audioBlob: audioBlob || undefined,
+        textInput: inputText,
+        targetLanguage,
+        snrDb: snr,
+        channelType,
+        modulation,
+        carrierFreqGhz: carrierFrequency,
+      });
 
-      if (audioBlob) {
-        formData.append('audio', audioBlob, 'mic_input.wav');
-      }
-
-      // Step progression simulation for realistic visual presentation
-      const interval = setInterval(() => {
-        setActiveStage((prev) => (prev < 8 ? prev + 1 : prev));
-      }, 250);
-
-      const res = await pipelineApi.executePipeline(formData);
       clearInterval(interval);
       setActiveStage(8);
-      setPipelineResult(res);
+      setPipelineResult(result);
     } catch (err: any) {
-      alert('Pipeline execution error: ' + (err.response?.data?.detail || err.message));
+      clearInterval(interval);
+      alert(`Pipeline execution error: ${err?.message || 'Check connection to backend'}`);
     } finally {
       setLoading(false);
     }
@@ -175,24 +170,27 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
 
   return (
     <div className="space-y-6 pb-12">
-      {/* Top Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-slate-800 glass-card">
+      {/* Top Banner Card */}
+      <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 card-hover">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold tracking-wide flex items-center gap-1.5">
-              <Radio className="h-3 w-3 animate-pulse" /> LIVE TRANSCEIVER TESTBED
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600">
+              <Radio className="h-4 w-4" />
+            </span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600">
+              Live Transceiver Testbed
             </span>
             {isDemoMode && (
-              <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-bold">
-                DEMO PRESETS ACTIVE
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-amber-50 text-amber-700 border border-amber-200">
+                Demo Presets Active
               </span>
             )}
           </div>
-          <h2 className="text-xl font-bold text-white">
-            Indian Multilingual Speech-to-Speech Neural Transceiver Pipeline
-          </h2>
-          <p className="text-xs text-slate-400">
-            Real-time Voice Input → STT → Language Identification → NLP Intent → Indic Translation → Digital Modulation / AWGN Channel → ML Quality Optimizer → Indic TTS
+          <h1 className="text-xl font-extrabold text-slate-900 tracking-tight">
+            Indian Multilingual Speech-to-Speech Neural Transceiver
+          </h1>
+          <p className="text-xs text-slate-500 mt-1 max-w-3xl leading-relaxed">
+            Real-time Voice Input → STT → Language Identification → NLP Intent → Indic Translation → Digital Modulation / AWGN Channel → Active ML Model Optimization → Indic TTS
           </p>
         </div>
 
@@ -203,9 +201,9 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
               <button
                 key={s.id}
                 onClick={() => handleSelectDemoSample(s)}
-                className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-indigo-900/60 border border-slate-700 hover:border-indigo-500 text-[11px] font-medium text-slate-200 transition-all flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-indigo-50 border border-slate-200 hover:border-indigo-200 text-xs font-semibold text-slate-700 hover:text-indigo-700 transition-all flex items-center gap-1.5"
               >
-                <Sparkles className="h-3 w-3 text-cyan-400" />
+                <Sparkles className="h-3.5 w-3.5 text-amber-500" />
                 <span>{s.language}</span>
               </button>
             ))}
@@ -213,36 +211,36 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
         )}
       </div>
 
-      {/* Main Grid: Left Controls, Center Pipeline Flow, Right Results */}
+      {/* Main Grid: Left Controls (4 cols), Right Results (8 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* LEFT COLUMN: Input & Radio Controls (4 cols) */}
-        <div className="lg:col-span-4 space-y-5">
+        {/* LEFT COLUMN: Input & Radio Controls */}
+        <div className="lg:col-span-4 space-y-6">
           {/* Card 1: Audio / Text Input */}
-          <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                <Mic className="h-4 w-4 text-indigo-400" /> Voice & Text Ingestion
-              </h3>
+          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-4 card-hover">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <Mic className="h-4 w-4 text-indigo-600" /> Voice & Text Ingestion
+              </h2>
               {audioBlob && (
-                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">
+                <span className="text-[10px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
                   Audio Attached
                 </span>
               )}
             </div>
 
             {/* Voice Record Buttons */}
-            <div className="flex items-center gap-3">
+            <div>
               {!isRecording ? (
                 <button
                   onClick={startRecording}
-                  className="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white font-medium text-xs flex items-center justify-center gap-2 shadow-lg shadow-rose-600/20 transition-all"
+                  className="w-full py-2.5 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
                 >
-                  <Mic className="h-4 w-4 animate-bounce" /> Record Live Speech
+                  <Mic className="h-4 w-4" /> Record Live Speech
                 </button>
               ) : (
                 <button
                   onClick={stopRecording}
-                  className="flex-1 py-2.5 px-4 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-medium text-xs flex items-center justify-center gap-2 animate-pulse transition-all"
+                  className="w-full py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-semibold text-xs flex items-center justify-center gap-2 animate-pulse transition-all"
                 >
                   <Square className="h-4 w-4" /> Stop Recording
                 </button>
@@ -250,14 +248,14 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
             </div>
 
             {audioUrl && (
-              <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
+              <div className="p-2 rounded-xl bg-slate-50 border border-slate-200">
                 <audio src={audioUrl} controls className="w-full h-8" />
               </div>
             )}
 
             {/* Typed Text Input */}
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                 Indian Speech Payload / Transcript
               </label>
               <textarea
@@ -265,22 +263,22 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="Enter Indian language communication or speak into microphone..."
-                className="w-full p-3 bg-slate-800/90 border border-slate-700 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors resize-none"
+                className="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 transition-all resize-none"
               />
             </div>
           </div>
 
           {/* Card 2: Neural Transceiver & Channel Controls */}
-          <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card space-y-4">
-            <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-              <Sliders className="h-4 w-4 text-cyan-400" /> Radio Channel Parameters
-            </h3>
+          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-4 card-hover">
+            <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2 pb-3 border-b border-slate-100">
+              <Sliders className="h-4 w-4 text-indigo-600" /> Radio Channel Parameters
+            </h2>
 
             {/* SNR Slider */}
-            <div>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-slate-400">Signal-to-Noise Ratio (SNR)</span>
-                <span className="font-mono font-bold text-cyan-400">{snr} dB</span>
+            <div className="space-y-1.5">
+              <div className="flex justify-between text-xs">
+                <span className="font-medium text-slate-600">Signal-to-Noise Ratio (SNR)</span>
+                <span className="font-mono font-bold text-indigo-600">{snr} dB</span>
               </div>
               <input
                 type="range"
@@ -289,9 +287,9 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
                 step="0.5"
                 value={snr}
                 onChange={(e) => setSnr(parseFloat(e.target.value))}
-                className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
               />
-              <div className="flex justify-between text-[10px] text-slate-500 mt-1">
+              <div className="flex justify-between text-[10px] text-slate-400">
                 <span>-5 dB (Severe Noise)</span>
                 <span>15 dB (Nominal)</span>
                 <span>35 dB (Clear)</span>
@@ -301,11 +299,11 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
             {/* Channel Type & Modulation */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Channel Fading</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">Channel Fading</label>
                 <select
                   value={channelType}
                   onChange={(e) => setChannelType(e.target.value)}
-                  className="w-full p-2 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+                  className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 font-medium focus:outline-none focus:border-indigo-500"
                 >
                   <option value="AWGN">AWGN (Standard)</option>
                   <option value="Rayleigh">Rayleigh Fading</option>
@@ -314,11 +312,11 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
               </div>
 
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Modulation</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">Modulation</label>
                 <select
                   value={modulation}
                   onChange={(e) => setModulation(e.target.value)}
-                  className="w-full p-2 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+                  className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 font-medium focus:outline-none focus:border-indigo-500"
                 >
                   <option value="BPSK">BPSK (Robust)</option>
                   <option value="QPSK">QPSK (High Rate)</option>
@@ -328,11 +326,11 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
 
             {/* Target Translation Language */}
             <div>
-              <label className="block text-xs text-slate-400 mb-1">Target Indian Voice Output</label>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">Target Indian Voice Output</label>
               <select
                 value={targetLanguage}
                 onChange={(e) => setTargetLanguage(e.target.value)}
-                className="w-full p-2 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+                className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 font-medium focus:outline-none focus:border-indigo-500"
               >
                 <option value="en">English (Pan-India)</option>
                 <option value="hi">Hindi (हिन्दी)</option>
@@ -349,7 +347,7 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
             <button
               onClick={runPipeline}
               disabled={loading}
-              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-indigo-600/30 transition-all disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm shadow-indigo-600/20 transition-all disabled:opacity-50 cursor-pointer"
             >
               {loading ? (
                 <>
@@ -364,15 +362,15 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
           </div>
         </div>
 
-        {/* CENTER & RIGHT COLUMN: Pipeline Visualization & Stage Drilldowns (8 cols) */}
-        <div className="lg:col-span-8 space-y-5">
+        {/* RIGHT COLUMN: Pipeline Visualization & Stage Drilldowns */}
+        <div className="lg:col-span-8 space-y-6">
           {/* Stage Progression Breadcrumb Bar */}
-          <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card">
+          <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm card-hover">
             <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
               <span>8-Stage Neural Transceiver Execution Flow</span>
               {pipelineResult && (
-                <span className="text-emerald-400 font-mono text-[10px]">
-                  Total Pipeline Latency: {pipelineResult.total_pipeline_time_ms} ms
+                <span className="text-emerald-700 font-mono text-xs font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  Latency: {pipelineResult.total_pipeline_time_ms} ms
                 </span>
               )}
             </div>
@@ -393,12 +391,12 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
                 return (
                   <div
                     key={s.step}
-                    className={`p-2 rounded-xl text-center border transition-all ${
+                    className={`p-2.5 rounded-xl text-center border transition-all ${
                       isCurrent
-                        ? 'bg-indigo-600/30 border-indigo-400 animate-pulse text-white'
+                        ? 'bg-indigo-50 border-indigo-400 animate-pulse text-indigo-700 shadow-sm'
                         : isPassed
-                        ? 'bg-slate-800/80 border-emerald-500/40 text-emerald-300'
-                        : 'bg-slate-900 border-slate-800 text-slate-500'
+                        ? 'bg-emerald-50/70 border-emerald-200 text-emerald-800 font-semibold'
+                        : 'bg-slate-50 border-slate-200 text-slate-400'
                     }`}
                   >
                     <div className="text-base mb-1">{s.icon}</div>
@@ -411,89 +409,89 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
 
           {/* Real-time Results Cards */}
           {pipelineResult ? (
-            <div className="space-y-5">
+            <div className="space-y-6">
               {/* Row 1: Language & NLP Intent Results */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Language Identification Card */}
-                <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card">
-                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm card-hover">
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2 flex items-center justify-between">
                     <span>Language Identification</span>
-                    <span className="text-cyan-400 font-mono">{(pipelineResult.detected_language_info.confidence * 100).toFixed(0)}%</span>
+                    <span className="text-indigo-600 font-mono font-bold">{(pipelineResult.detected_language_info.confidence * 100).toFixed(0)}%</span>
                   </div>
-                  <div className="text-lg font-bold text-white mb-1">
+                  <div className="text-lg font-bold text-slate-900 mb-1">
                     {pipelineResult.detected_language_info.language}
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-400">
-                    <span>Script: <strong className="text-slate-200">{pipelineResult.detected_language_info.script}</strong></span>
+                  <div className="flex items-center gap-2 text-xs text-slate-500">
+                    <span>Script: <strong className="text-slate-800">{pipelineResult.detected_language_info.script}</strong></span>
                     <span>•</span>
-                    <span>Code: <strong className="text-slate-200 uppercase">{pipelineResult.detected_language_info.language_code}</strong></span>
+                    <span>Code: <strong className="text-slate-800 uppercase">{pipelineResult.detected_language_info.language_code}</strong></span>
                   </div>
                 </div>
 
                 {/* Intent Classification Card */}
-                <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card">
-                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm card-hover">
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2 flex items-center justify-between">
                     <span>NLP Intent Class</span>
-                    <span className="text-indigo-400 font-mono">{(pipelineResult.nlp_result.confidence * 100).toFixed(0)}%</span>
+                    <span className="text-indigo-600 font-mono font-bold">{(pipelineResult.nlp_result.confidence * 100).toFixed(0)}%</span>
                   </div>
-                  <div className="text-lg font-bold text-indigo-300 mb-1">
+                  <div className="text-lg font-bold text-indigo-600 mb-1">
                     {pipelineResult.nlp_result.intent}
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-400">
-                    <span>Sentiment: <strong className={pipelineResult.nlp_result.sentiment === 'Positive' ? 'text-emerald-400' : pipelineResult.nlp_result.sentiment === 'Negative' ? 'text-rose-400' : 'text-slate-300'}>{pipelineResult.nlp_result.sentiment}</strong></span>
+                  <div className="flex items-center gap-2 text-xs text-slate-500">
+                    <span>Sentiment: <strong className={pipelineResult.nlp_result.sentiment === 'Positive' ? 'text-emerald-600' : pipelineResult.nlp_result.sentiment === 'Negative' ? 'text-rose-600' : 'text-slate-700'}>{pipelineResult.nlp_result.sentiment}</strong></span>
                   </div>
                 </div>
 
                 {/* ML Comm Quality Card */}
-                <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card">
-                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm card-hover">
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2 flex items-center justify-between">
                     <span>ML Quality Optimizer</span>
-                    <span className="text-emerald-400 font-mono">{(pipelineResult.ml_quality_result.confidence * 100).toFixed(0)}%</span>
+                    <span className="text-emerald-600 font-mono font-bold">{(pipelineResult.ml_quality_result.confidence * 100).toFixed(0)}%</span>
                   </div>
                   <div className={`text-lg font-bold mb-1 ${
                     pipelineResult.ml_quality_result.predicted_quality === 'Excellent'
-                      ? 'text-emerald-400'
+                      ? 'text-emerald-600'
                       : pipelineResult.ml_quality_result.predicted_quality === 'Good'
-                      ? 'text-cyan-400'
+                      ? 'text-indigo-600'
                       : pipelineResult.ml_quality_result.predicted_quality === 'Moderate'
-                      ? 'text-amber-400'
-                      : 'text-rose-400'
+                      ? 'text-amber-600'
+                      : 'text-rose-600'
                   }`}>
                     {pipelineResult.ml_quality_result.predicted_quality} Link
                   </div>
-                  <div className="text-[11px] text-slate-400 truncate">
+                  <div className="text-[11px] text-slate-500 truncate" title={pipelineResult.ml_quality_result.recommendation}>
                     {pipelineResult.ml_quality_result.recommendation}
                   </div>
                 </div>
               </div>
 
               {/* Row 2: Digital Signal Waveform Graphs */}
-              <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-4 card-hover">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
                   <div>
-                    <h4 className="text-sm font-semibold text-white flex items-center gap-2">
-                      <Activity className="h-4 w-4 text-cyan-400" /> Radio Transceiver Waveforms (BPSK / AWGN Channel)
-                    </h4>
-                    <p className="text-[11px] text-slate-400">
-                      Comparing Modulated Carrier (Blue), AWGN Channel Noise (Amber), and Demodulated Decoded Signal (Emerald)
+                    <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                      <Activity className="h-4 w-4 text-indigo-600" /> Radio Transceiver Waveforms (BPSK / AWGN Channel)
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Carrier (Blue), AWGN Channel Noise (Amber), and Demodulated Decoded Signal (Emerald)
                     </p>
                   </div>
                   <div className="flex items-center gap-3 text-xs font-mono">
-                    <span className="text-slate-400">BER: <strong className="text-rose-400">{pipelineResult.radio_result.ber}</strong></span>
-                    <span className="text-slate-400">Loss: <strong className="text-amber-400">{pipelineResult.radio_result.packet_loss}%</strong></span>
-                    <span className="text-slate-400">Latency: <strong className="text-cyan-400">{pipelineResult.radio_result.latency_ms} ms</strong></span>
+                    <span className="text-slate-500">BER: <strong className="text-rose-600">{pipelineResult.radio_result.ber}</strong></span>
+                    <span className="text-slate-500">Loss: <strong className="text-amber-600">{pipelineResult.radio_result.packet_loss}%</strong></span>
+                    <span className="text-slate-500">Latency: <strong className="text-indigo-600">{pipelineResult.radio_result.latency_ms} ms</strong></span>
                   </div>
                 </div>
 
-                <div className="h-48 w-full">
+                <div className="h-52 w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={waveformChartData} margin={{ top: 5, right: 20, left: -20, bottom: 5 }}>
-                      <XAxis dataKey="index" stroke="#475569" tick={{ fontSize: 10 }} />
-                      <YAxis stroke="#475569" tick={{ fontSize: 10 }} domain={[-2, 2]} />
+                      <XAxis dataKey="index" stroke="#94a3b8" tick={{ fontSize: 10 }} />
+                      <YAxis stroke="#94a3b8" tick={{ fontSize: 10 }} domain={[-2, 2]} />
                       <Tooltip
-                        contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', fontSize: '11px' }}
+                        contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', borderRadius: '12px', fontSize: '11px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}
                       />
-                      <Line type="monotone" dataKey="original" stroke="#6366f1" strokeWidth={2} dot={false} name="Original Carrier" />
+                      <Line type="monotone" dataKey="original" stroke="#4f46e5" strokeWidth={2} dot={false} name="Original Carrier" />
                       <Line type="monotone" dataKey="noisy" stroke="#f59e0b" strokeWidth={1} dot={false} name="AWGN Channel Signal" />
                       <Line type="monotone" dataKey="demodulated" stroke="#10b981" strokeWidth={2} strokeDasharray="3 3" dot={false} name="Demodulated Signal" />
                     </LineChart>
@@ -502,30 +500,30 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
               </div>
 
               {/* Row 3: Decoded Output & Indian TTS Audio Player */}
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-indigo-950/50 via-slate-900 to-indigo-950/50 border border-indigo-500/30 glass-card space-y-4">
-                <div className="flex items-center justify-between">
+              <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-4 card-hover">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                   <div className="flex items-center gap-2">
-                    <Volume2 className="h-5 w-5 text-emerald-400" />
-                    <h4 className="text-sm font-bold text-white">Decoded Speech & Indic Synthesis</h4>
+                    <Volume2 className="h-5 w-5 text-indigo-600" />
+                    <h3 className="text-sm font-bold text-slate-900">Decoded Speech & Indic Synthesis</h3>
                   </div>
-                  <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-indigo-900/60 text-indigo-300 border border-indigo-700">
+                  <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200">
                     Target: {pipelineResult.translation_result?.target_language || targetLanguage}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Original Input Text */}
-                  <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-xs">
-                    <span className="text-slate-400 font-semibold block mb-1">Transcribed Input Speech:</span>
-                    <p className="text-slate-200 leading-relaxed font-medium">
+                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-xs">
+                    <span className="text-slate-500 font-semibold block mb-1">Transcribed Input Speech:</span>
+                    <p className="text-slate-800 leading-relaxed font-medium">
                       {pipelineResult.stt_result?.transcript || inputText}
                     </p>
                   </div>
 
                   {/* Translated & Synthesized Decoded Output */}
-                  <div className="p-3 rounded-xl bg-slate-800/60 border border-indigo-500/40 text-xs">
-                    <span className="text-indigo-300 font-semibold block mb-1">Decoded & Synthesized Output:</span>
-                    <p className="text-cyan-200 leading-relaxed font-semibold">
+                  <div className="p-4 rounded-xl bg-indigo-50/50 border border-indigo-100 text-xs">
+                    <span className="text-indigo-700 font-semibold block mb-1">Decoded & Synthesized Output:</span>
+                    <p className="text-slate-900 leading-relaxed font-semibold">
                       {pipelineResult.translation_result?.translated_text || pipelineResult.stt_result?.transcript || inputText}
                     </p>
                   </div>
@@ -533,19 +531,19 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
 
                 {/* Audio Playback Controls */}
                 {pipelineResult.tts_result && (
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-800/90 border border-slate-700">
+                  <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-200">
                     <div className="flex items-center gap-3">
                       <button
                         onClick={togglePlayDecodedAudio}
-                        className="h-10 w-10 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold flex items-center justify-center shadow-lg shadow-emerald-500/30 transition-all"
+                        className="h-10 w-10 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold flex items-center justify-center shadow-sm shadow-indigo-600/20 transition-all cursor-pointer"
                       >
                         {isPlayingAudio ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
                       </button>
                       <div>
-                        <div className="text-xs font-semibold text-white">
+                        <div className="text-xs font-bold text-slate-900">
                           Play Received Indic Speech Voice
                         </div>
-                        <div className="text-[10px] text-slate-400">
+                        <div className="text-[10px] text-slate-500">
                           Format: MP3 • Duration: ~{pipelineResult.tts_result.audio_duration}s
                         </div>
                       </div>
@@ -554,7 +552,7 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
                     <a
                       href={pipelineResult.tts_result.audio_url}
                       download={pipelineResult.tts_result.audio_filename}
-                      className="px-3 py-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-xs text-slate-200 flex items-center gap-1.5 transition-colors"
+                      className="px-3 py-1.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700 flex items-center gap-1.5 transition-colors"
                     >
                       <Download className="h-3.5 w-3.5" /> Export Audio
                     </a>
@@ -564,15 +562,15 @@ export const LiveTransceiverPage: React.FC<LiveTransceiverPageProps> = ({ isDemo
             </div>
           ) : (
             /* Empty State Guide */
-            <div className="p-12 rounded-2xl bg-slate-900/60 border border-slate-800 text-center space-y-4">
-              <div className="h-16 w-16 mx-auto rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-                <Radio className="h-8 w-8 text-indigo-400 animate-pulse" />
+            <div className="p-12 rounded-2xl bg-white border border-slate-200/90 text-center space-y-4 shadow-sm">
+              <div className="h-14 w-14 mx-auto rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center">
+                <Radio className="h-7 w-7 text-indigo-600" />
               </div>
               <div className="max-w-md mx-auto">
-                <h3 className="text-base font-bold text-white mb-1">
+                <h3 className="text-sm font-bold text-slate-900 mb-1">
                   Ready to Transmit Speech Over Neural Transceiver
                 </h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   Record your voice in any Indian language, or pick a pre-configured dialect from Demo Presets, adjust channel noise parameters, and click <strong>Transmit</strong>.
                 </p>
               </div>

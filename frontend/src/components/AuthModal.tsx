@@ -75,71 +75,76 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-      <div className="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden glass-card">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
+      <div className="w-full max-w-md bg-white border border-slate-200/90 rounded-2xl shadow-2xl overflow-hidden card-hover">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-indigo-400" />
-            <h3 className="text-base font-semibold text-white">
-              {isRegister ? 'Create Pilot Account' : 'iTantra Secure Login'}
-            </h3>
+        <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-indigo-50 text-indigo-600">
+              <ShieldCheck className="h-5 w-5" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-slate-900">
+                {isRegister ? 'Create Pilot Account' : 'iTantra Secure Access'}
+              </h3>
+              <p className="text-[11px] text-slate-500">Multilingual Transceiver Authentication</p>
+            </div>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors">
+          <button onClick={onClose} className="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer">
             <X className="h-5 w-5" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {error && (
-            <div className="p-3 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+            <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium">
               {error}
             </div>
           )}
 
           {isRegister && (
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Full Name / Call Sign</label>
+              <label className="block text-xs font-semibold text-slate-700 mb-1.5">Full Name / Call Sign</label>
               <div className="relative">
-                <User className="h-4 w-4 absolute left-3 top-3 text-slate-500" />
+                <User className="h-4 w-4 absolute left-3 top-3 text-slate-400" />
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Officer Vikram Rao"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-indigo-500"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-500/10 transition-all"
                 />
               </div>
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">Email Address</label>
             <div className="relative">
-              <Mail className="h-4 w-4 absolute left-3 top-3 text-slate-500" />
+              <Mail className="h-4 w-4 absolute left-3 top-3 text-slate-400" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="pilot@itantra.ai"
-                className="w-full pl-9 pr-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-indigo-500"
+                className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-500/10 transition-all"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Password</label>
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">Password</label>
             <div className="relative">
-              <Lock className="h-4 w-4 absolute left-3 top-3 text-slate-500" />
+              <Lock className="h-4 w-4 absolute left-3 top-3 text-slate-400" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-9 pr-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-indigo-500"
+                className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-500/10 transition-all"
               />
             </div>
           </div>
@@ -147,42 +152,42 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2"
+            className="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-sm hover:shadow flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
           >
             {loading ? 'Authenticating...' : isRegister ? 'Register Account' : 'Sign In'}
           </button>
 
           {/* Quick Demo Logins for Viva evaluation */}
-          <div className="pt-2 border-t border-slate-800">
-            <div className="text-[11px] text-slate-400 text-center mb-2 font-medium">
+          <div className="pt-3 border-t border-slate-100">
+            <div className="text-[11px] text-slate-500 text-center mb-2.5 font-medium">
               Viva & Evaluator Quick Logins:
             </div>
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={handleQuickPilotLogin}
-                className="py-1.5 px-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-[11px] text-cyan-300 text-center transition-colors"
+                className="py-2 px-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-[11px] font-semibold text-indigo-600 text-center transition-colors cursor-pointer"
               >
                 Demo Pilot User
               </button>
               <button
                 type="button"
                 onClick={handleQuickAdminLogin}
-                className="py-1.5 px-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-[11px] text-rose-300 text-center transition-colors"
+                className="py-2 px-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-[11px] font-semibold text-rose-600 text-center transition-colors cursor-pointer"
               >
                 Demo Admin User
               </button>
             </div>
           </div>
 
-          <div className="text-center pt-2 text-xs text-slate-400">
+          <div className="text-center pt-2 text-xs text-slate-500">
             {isRegister ? (
               <span>
                 Already have credentials?{' '}
                 <button
                   type="button"
                   onClick={() => setIsRegister(false)}
-                  className="text-indigo-400 hover:underline font-semibold"
+                  className="text-indigo-600 hover:underline font-bold cursor-pointer"
                 >
                   Sign In
                 </button>
@@ -193,7 +198,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess
                 <button
                   type="button"
                   onClick={() => setIsRegister(true)}
-                  className="text-indigo-400 hover:underline font-semibold"
+                  className="text-indigo-600 hover:underline font-bold cursor-pointer"
                 >
                   Create Account
                 </button>

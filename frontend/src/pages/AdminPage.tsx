@@ -23,44 +23,88 @@ export const AdminPage: React.FC = () => {
 
   return (
     <div className="space-y-6 pb-12">
-      <div className="flex items-center justify-between p-5 rounded-2xl bg-slate-900/90 border border-rose-500/30 glass-card">
-        <div><h2 className="text-lg font-bold text-white mb-1">🛡️ Admin Command Center</h2><p className="text-xs text-slate-400">Restricted to ADMIN role only</p></div>
-        <button onClick={resetDemo} className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold transition-all">Reset Demo Data</button>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white border border-rose-200 shadow-sm card-hover">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="p-1.5 rounded-lg bg-rose-50 text-rose-600 font-bold text-xs">🛡️ ADMIN</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-rose-600">Restricted Access</span>
+          </div>
+          <h2 className="text-xl font-extrabold text-slate-900">Admin Command Center</h2>
+          <p className="text-xs text-slate-500 mt-0.5">System administration, telemetry logs, and role management</p>
+        </div>
+        <button
+          onClick={resetDemo}
+          className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold shadow-sm hover:shadow transition-all cursor-pointer"
+        >
+          Reset Demo Data
+        </button>
       </div>
+
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {[['Total Users', users.length, 'text-cyan-400'], ['Total Sessions', users.reduce((a:number,u:any)=>a+(u.session_count||0),0), 'text-emerald-400'], ['Admin Users', users.filter((u:any)=>u.role==='ADMIN').length, 'text-rose-400'], ['System Logs', logs.length, 'text-indigo-400']].map(([l,v,c]) => (
-          <div key={l as string} className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card text-center">
-            <div className="text-xs text-slate-400 mb-1">{l}</div>
-            <div className={`text-2xl font-bold ${c}`}>{v}</div>
+        {[
+          ['Total Users', users.length, 'text-cyan-600', 'bg-cyan-50 border-cyan-100'],
+          ['Total Sessions', users.reduce((a: number, u: any) => a + (u.session_count || 0), 0), 'text-emerald-600', 'bg-emerald-50 border-emerald-100'],
+          ['Admin Users', users.filter((u: any) => u.role === 'ADMIN').length, 'text-rose-600', 'bg-rose-50 border-rose-100'],
+          ['System Logs', logs.length, 'text-indigo-600', 'bg-indigo-50 border-indigo-100']
+        ].map(([l, v, c, bg]) => (
+          <div key={l as string} className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center card-hover">
+            <div className="text-xs font-medium text-slate-500 mb-1.5">{l}</div>
+            <div className={`text-2xl font-extrabold ${c}`}>{v}</div>
           </div>
         ))}
       </div>
-      <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card">
-        <h3 className="text-sm font-semibold text-white mb-4">Registered Users</h3>
-        <table className="w-full text-xs"><thead><tr className="text-slate-400 border-b border-slate-800 font-semibold">
-          <th className="pb-2 text-left">Name</th><th className="pb-2 text-left">Email</th><th className="pb-2 text-left">Role</th><th className="pb-2 text-left">Sessions</th><th className="pb-2 text-left">Joined</th>
-        </tr></thead><tbody className="divide-y divide-slate-800/60">
-          {users.map((u:any) => (
-            <tr key={u.id} className="hover:bg-slate-800/40 transition-colors">
-              <td className="py-2.5 text-white font-semibold">{u.name}</td>
-              <td className="py-2.5 text-slate-400 font-mono">{u.email}</td>
-              <td className="py-2.5"><span className={`px-2 py-0.5 rounded border text-[10px] font-bold ${u.role==='ADMIN'?'bg-rose-950 text-rose-300 border-rose-800':'bg-slate-800 text-slate-300 border-slate-700'}`}>{u.role}</span></td>
-              <td className="py-2.5 text-slate-300">{u.session_count}</td>
-              <td className="py-2.5 text-slate-400 text-[10px]">{new Date(u.created_at).toLocaleDateString('en-IN')}</td>
-            </tr>
-          ))}
-        </tbody></table>
+
+      <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-4 card-hover">
+        <h3 className="text-sm font-bold text-slate-900 pb-3 border-b border-slate-100">Registered Users</h3>
+        <div className="overflow-x-auto">
+          <table className="table-spacious w-full text-xs">
+            <thead>
+              <tr className="text-slate-500 border-b border-slate-200 font-semibold bg-slate-50/50">
+                <th className="py-3 px-3 text-left">Name</th>
+                <th className="py-3 px-3 text-left">Email</th>
+                <th className="py-3 px-3 text-left">Role</th>
+                <th className="py-3 px-3 text-left">Sessions</th>
+                <th className="py-3 px-3 text-left">Joined</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {users.map((u: any) => (
+                <tr key={u.id} className="hover:bg-slate-50/80 transition-colors">
+                  <td className="py-3 px-3 text-slate-900 font-semibold">{u.name}</td>
+                  <td className="py-3 px-3 text-slate-600 font-mono text-[11px]">{u.email}</td>
+                  <td className="py-3 px-3">
+                    <span className={`px-2.5 py-1 rounded-full border text-[10px] font-bold ${
+                      u.role === 'ADMIN' ? 'bg-rose-50 text-rose-700 border-rose-200' : 'bg-slate-100 text-slate-700 border-slate-200'
+                    }`}>
+                      {u.role}
+                    </span>
+                  </td>
+                  <td className="py-3 px-3 text-slate-700 font-medium">{u.session_count}</td>
+                  <td className="py-3 px-3 text-slate-500 text-[11px]">{new Date(u.created_at).toLocaleDateString('en-IN')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card">
-        <h3 className="text-sm font-semibold text-white mb-4">Recent System Audit Logs</h3>
-        <div className="space-y-2 max-h-72 overflow-y-auto">
-          {logs.map((log:any) => {
-            const levelCls = log.level==='ERROR' ? 'bg-rose-950 text-rose-300' : log.level==='WARNING' ? 'bg-amber-950 text-amber-300' : 'bg-slate-900 text-slate-400';
+
+      <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-4 card-hover">
+        <h3 className="text-sm font-bold text-slate-900 pb-3 border-b border-slate-100">Recent System Audit Logs</h3>
+        <div className="space-y-2.5 max-h-80 overflow-y-auto pr-1">
+          {logs.map((log: any) => {
+            const levelCls = log.level === 'ERROR'
+              ? 'bg-rose-100 text-rose-700 border border-rose-200'
+              : log.level === 'WARNING'
+              ? 'bg-amber-100 text-amber-700 border border-amber-200'
+              : 'bg-slate-100 text-slate-600 border border-slate-200';
             return (
-              <div key={log.id} className="flex items-start gap-3 p-2.5 rounded-lg bg-slate-800/60 border border-slate-700/50 text-xs">
+              <div key={log.id} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50/70 border border-slate-200/80 text-xs hover:bg-slate-50 transition-colors">
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold shrink-0 ${levelCls}`}>{log.level}</span>
-                <div className="flex-1 min-w-0"><div className="text-white font-semibold">{log.action}</div><div className="text-slate-400 truncate">{log.details}</div></div>
-                <span className="text-slate-500 text-[10px] shrink-0">{log.timestamp}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="text-slate-900 font-semibold">{log.action}</div>
+                  <div className="text-slate-500 truncate mt-0.5">{log.details}</div>
+                </div>
+                <span className="text-slate-400 text-[10px] shrink-0 font-mono">{log.timestamp}</span>
               </div>
             );
           })}
@@ -94,20 +138,33 @@ export const VivaGuidePage: React.FC = () => {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <div className="space-y-6 pb-12">
-      <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 glass-card">
-        <h2 className="text-lg font-bold text-white mb-1">📖 Viva / Project Review Exam Guide</h2>
-        <p className="text-xs text-slate-400">{qnas.length} technical Q&A covering ML, Signal Processing, NLP, and Database concepts</p>
+      <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm card-hover">
+        <div className="flex items-center gap-2 mb-1.5">
+          <span className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600 font-bold text-xs">📖 ACADEMIC VIVA</span>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600">Technical Q&A Guide</span>
+        </div>
+        <h2 className="text-xl font-extrabold text-slate-900">Viva & Project Review Exam Guide</h2>
+        <p className="text-xs text-slate-500 mt-1">{qnas.length} comprehensive technical questions covering ML, Signal Processing, NLP, and Database Architecture</p>
       </div>
       <div className="space-y-3">
         {qnas.map((qa, i) => (
-          <div key={i} className="rounded-2xl bg-slate-900/90 border border-slate-800 glass-card overflow-hidden">
-            <button className="w-full flex items-center justify-between px-5 py-4 text-left text-xs font-semibold text-white hover:bg-slate-800/60 transition-colors" onClick={()=>setOpen(open===i?null:i)}>
-              <span className="flex items-center gap-2"><span className="text-indigo-400 font-mono">Q{i+1}.</span>{qa.q}</span>
-              <span className="text-slate-400 ml-2">{open===i?'▲':'▼'}</span>
+          <div key={i} className="rounded-2xl bg-white border border-slate-200/90 shadow-sm overflow-hidden card-hover">
+            <button
+              className="w-full flex items-center justify-between px-6 py-4 text-left text-xs font-semibold text-slate-800 hover:bg-slate-50/80 transition-colors cursor-pointer"
+              onClick={() => setOpen(open === i ? null : i)}
+            >
+              <span className="flex items-center gap-2.5">
+                <span className="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-600 font-mono font-bold text-[11px]">Q{i + 1}</span>
+                <span className="text-slate-900 font-medium">{qa.q}</span>
+              </span>
+              <span className="text-slate-400 font-mono ml-3 text-xs">{open === i ? '▲' : '▼'}</span>
             </button>
-            {open===i && (
-              <div className="px-5 pb-4 text-xs text-slate-300 leading-relaxed border-t border-slate-800 pt-3">
-                <span className="text-emerald-400 font-semibold">A: </span>{qa.a}
+            {open === i && (
+              <div className="px-6 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-4 bg-slate-50/40">
+                <div className="flex gap-2">
+                  <span className="text-emerald-600 font-bold shrink-0">Answer:</span>
+                  <span>{qa.a}</span>
+                </div>
               </div>
             )}
           </div>

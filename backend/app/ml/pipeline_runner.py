@@ -147,7 +147,7 @@ class TransceiverPipelineRunner:
             # ML prediction record
             ml_rec = MLPrediction(
                 session_id=session_id,
-                model_name="RandomForest-CommQuality-v1.0",
+                model_name=ml_quality_res.get("model_version", "RandomForest-CommQuality-v1.0"),
                 prediction=ml_quality_res["predicted_quality"],
                 confidence=ml_quality_res["confidence"],
                 features={

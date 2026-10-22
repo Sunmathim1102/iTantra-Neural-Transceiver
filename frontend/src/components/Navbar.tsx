@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio, Wifi, Volume2, Shield, User as UserIcon, Sparkles, Activity } from 'lucide-react';
+import { Radio, Wifi, User as UserIcon, Sparkles } from 'lucide-react';
 import { User } from '../types';
 
 interface NavbarProps {
@@ -15,44 +15,42 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAuth,
   onLogout,
   isDemoMode,
-  onToggleDemoMode
+  onToggleDemoMode,
 }) => {
   return (
-    <header className="h-16 border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 flex items-center justify-between sticky top-0 z-40">
+    <header className="h-16 border-b border-slate-200/90 bg-white/95 backdrop-blur-md px-6 flex items-center justify-between sticky top-0 z-40">
       {/* Brand Identity */}
       <div className="flex items-center gap-3">
-        <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 p-0.5 shadow-lg shadow-indigo-500/20">
-          <div className="h-full w-full bg-slate-900 rounded-[10px] flex items-center justify-center">
-            <Radio className="h-5 w-5 text-cyan-400 animate-pulse" />
-          </div>
+        <div className="h-10 w-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-md shadow-indigo-600/20">
+          <Radio className="h-5 w-5 text-white animate-pulse" />
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400">
+            <h1 className="text-xl font-extrabold tracking-tight text-slate-900">
               iTantra
             </h1>
-            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-indigo-950 text-indigo-300 border border-indigo-800">
-              v1.0 ML Transceiver
+            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+              Neural Transceiver
             </span>
           </div>
-          <p className="text-[11px] text-slate-400 hidden md:block">
-            Indian Multilingual Neural Transceiver Radio Access
+          <p className="text-[11px] text-slate-500 hidden md:block">
+            Indian Multilingual Speech Intelligence & Neural Transceiver Access
           </p>
         </div>
       </div>
 
       {/* Center status badges */}
-      <div className="hidden lg:flex items-center gap-4">
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs text-slate-300">
-          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+      <div className="hidden lg:flex items-center gap-3">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-700">
+          <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
           <span className="text-slate-400 font-mono">RF Carrier:</span>
-          <span className="font-semibold text-cyan-300">2.40 GHz</span>
+          <span className="font-semibold font-mono text-slate-900">2.40 GHz</span>
         </div>
 
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs text-slate-300">
-          <Wifi className="h-3.5 w-3.5 text-indigo-400" />
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-700">
+          <Wifi className="h-3.5 w-3.5 text-indigo-600" />
           <span className="text-slate-400 font-mono">Channel:</span>
-          <span className="font-semibold text-indigo-300">AWGN / BPSK</span>
+          <span className="font-semibold text-slate-900">AWGN / BPSK</span>
         </div>
       </div>
 
@@ -60,43 +58,46 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="flex items-center gap-3">
         {/* Demo Mode Toggle */}
         <button
+          type="button"
           onClick={onToggleDemoMode}
-          className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
+          className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all border ${
             isDemoMode
-              ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-sm shadow-amber-500/10'
-              : 'bg-slate-800 text-slate-400 border-slate-700 hover:text-slate-200'
+              ? 'bg-amber-50 text-amber-800 border-amber-300 shadow-sm'
+              : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100 hover:text-slate-900'
           }`}
           title="Toggle Pre-recorded Indian Dialect Presets for Viva/Testing"
         >
-          <Sparkles className="h-3.5 w-3.5" />
-          <span>{isDemoMode ? 'DEMO MODE ACTIVE' : 'Demo Mode'}</span>
+          <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+          <span>{isDemoMode ? 'DEMO MODE ACTIVE' : 'Demo Presets'}</span>
         </button>
 
         {/* User Account / Auth */}
         {user ? (
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs text-slate-200">
-              <div className="h-5 w-5 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-[10px]">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800">
+              <div className="h-5 w-5 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px]">
                 {user.name.charAt(0)}
               </div>
               <span className="font-medium max-w-[120px] truncate">{user.name}</span>
               {user.role === 'ADMIN' && (
-                <span className="px-1.5 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800 text-[9px] font-bold">
+                <span className="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 text-[9px] font-bold">
                   ADMIN
                 </span>
               )}
             </div>
             <button
+              type="button"
               onClick={onLogout}
-              className="text-xs text-slate-400 hover:text-rose-400 px-2 py-1 transition-colors"
+              className="text-xs text-slate-500 hover:text-rose-600 px-2 py-1 transition-colors font-medium"
             >
               Logout
             </button>
           </div>
         ) : (
           <button
+            type="button"
             onClick={onOpenAuth}
-            className="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md shadow-indigo-600/20 transition-all"
+            className="flex items-center gap-2 px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-sm shadow-indigo-600/20 transition-all"
           >
             <UserIcon className="h-3.5 w-3.5" />
             <span>Sign In / Register</span>

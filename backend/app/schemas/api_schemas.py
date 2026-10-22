@@ -207,3 +207,33 @@ class SystemHealthResponse(BaseModel):
     comm_quality_model: str
     uptime_seconds: float
     system_time: datetime.datetime
+
+# ----------------- ML Lifecycle Schemas -----------------
+class CleanDatasetRequest(BaseModel):
+    remove_duplicates: bool = True
+    impute_numeric: str = "median"
+    impute_categorical: str = "mode"
+    outlier_strategy: str = "clip"
+    drop_constant_features: bool = True
+    preview_only: bool = True
+
+class ScaleAnalysisRequest(BaseModel):
+    scaler_type: str = "StandardScaler"
+    features: Optional[List[str]] = None
+
+class PCAnalysisRequest(BaseModel):
+    n_components: int = 2
+    features: Optional[List[str]] = None
+    scale_first: bool = True
+
+class TrainModelRequest(BaseModel):
+    dataset_id: int
+    algorithm: str = "Random Forest"
+    scaler_type: str = "StandardScaler"
+    pca_enabled: bool = False
+    pca_components: int = 2
+    test_size: float = 0.2
+    random_seed: int = 42
+    hyperparameters: Optional[Dict[str, Any]] = None
+    selected_features: Optional[List[str]] = None
+

@@ -15,6 +15,28 @@ class CommunicationQualityModel:
         self._load_model()
 
     def _load_model(self):
+        try:
+            from app.database.connection import SessionLocal
+            from app.models.db_models import TrainingExperiment
+            db = SessionLocal()
+            active_exp = db.query(TrainingExperiment).filter(TrainingExperiment.is_active == 1).first()
+            if active_exp and os.path.exists(active_exp.artifact_path):
+                self.pipeline = joblib.load(active_exp.artifact_path)
+                self.metrics = {
+                    "model_name": f"{active_exp.algorithm} ({active_exp.experiment_id})",
+                    "accuracy": active_exp.accuracy,
+                    "precision": active_exp.precision,
+                    "recall": active_exp.recall,
+                    "f1_score": active_exp.f1_score,
+                    "feature_importances": active_exp.feature_importances or {}
+                }
+                self.model_version = f"{active_exp.algorithm} ({active_exp.experiment_id})"
+                db.close()
+                return
+            db.close()
+        except Exception:
+            pass
+
         if os.path.exists(self.model_path):
             try:
                 self.pipeline = joblib.load(self.model_path)
@@ -27,6 +49,7 @@ class CommunicationQualityModel:
                     self.metrics = json.load(f)
             except Exception:
                 pass
+        self.model_version = "RandomForest-v1.0 (Physics-Calibrated)"
 
     def predict_quality(
         self,
@@ -94,7 +117,7 @@ class CommunicationQualityModel:
             "class_probabilities": class_probs,
             "feature_importance": feature_importance,
             "recommendation": recommendation,
-            "model_version": "RandomForest-v1.0 (Physics-Calibrated)",
+            "model_version": getattr(self, "model_version", "RandomForest-v1.0 (Physics-Calibrated)"),
             "inference_time_ms": round(elapsed_ms, 2)
         }
 

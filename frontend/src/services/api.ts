@@ -53,6 +53,29 @@ export const pipelineApi = {
     });
     return res.data;
   },
+  runPipeline: async (params: {
+    audioBlob?: Blob;
+    textInput?: string;
+    targetLanguage: string;
+    snrDb: number;
+    channelType: string;
+    modulation: string;
+    carrierFreqGhz: number;
+  }): Promise<TransceiverPipelineResponse> => {
+    const formData = new FormData();
+    if (params.audioBlob) {
+      formData.append('audio_file', params.audioBlob, 'recorded_audio.wav');
+    }
+    if (params.textInput) {
+      formData.append('text_input', params.textInput);
+    }
+    formData.append('target_language', params.targetLanguage);
+    formData.append('snr_db', params.snrDb.toString());
+    formData.append('channel_type', params.channelType);
+    formData.append('modulation', params.modulation);
+    formData.append('carrier_freq_ghz', params.carrierFreqGhz.toString());
+    return pipelineApi.executePipeline(formData);
+  },
 };
 
 export const speechApi = {
@@ -131,6 +154,53 @@ export const mlApi = {
     const res = await api.get('/ml/dataset/preview');
     return res.data;
   },
+  listDatasets: async () => {
+    const res = await api.get('/ml/datasets');
+    return res.data;
+  },
+  uploadDataset: async (formData: FormData) => {
+    const res = await api.post('/ml/datasets/upload', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    });
+    return res.data;
+  },
+  inspectDataset: async (datasetId: number) => {
+    const res = await api.get(`/ml/datasets/${datasetId}/inspection`);
+    return res.data;
+  },
+  runEDA: async (datasetId: number) => {
+    const res = await api.post(`/ml/datasets/${datasetId}/eda`);
+    return res.data;
+  },
+  cleanDataset: async (datasetId: number, options: any) => {
+    const res = await api.post(`/ml/datasets/${datasetId}/clean`, options);
+    return res.data;
+  },
+  runScalingAnalysis: async (datasetId: number, options: any) => {
+    const res = await api.post(`/ml/datasets/${datasetId}/scale-analysis`, options);
+    return res.data;
+  },
+  runPCAAnalysis: async (datasetId: number, options: any) => {
+    const res = await api.post(`/ml/datasets/${datasetId}/pca-analysis`, options);
+    return res.data;
+  },
+  trainModel: async (params: any) => {
+    const res = await api.post('/ml/train', params);
+    return res.data;
+  },
+  getExperiments: async () => {
+    const res = await api.get('/ml/experiments');
+    return res.data;
+  },
+  activateExperiment: async (experimentId: string) => {
+    const res = await api.post(`/ml/experiments/${experimentId}/activate`);
+    return res.data;
+  },
+  getWorkflowStatus: async () => {
+    const res = await api.get('/ml/lifecycle/workflow-status');
+    return res.data;
+  },
+  getDatasetDownloadUrl: (datasetId: number) => `/api/ml/datasets/${datasetId}/download`
 };
 
 export const sessionsApi = {
